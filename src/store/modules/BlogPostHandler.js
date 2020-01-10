@@ -13,7 +13,7 @@ const state = {
             img: 'https://images.unsplash.com/photo-1447078806655-40579c2520d6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80'
         },
         {
-            id:2, 
+            id: 2,
             title: "Dessert is life",
             url: "dessert-is-life",
             excerpt: "Chops ipsum dipsum..",
@@ -32,11 +32,11 @@ const state = {
             img: 'https://images.unsplash.com/photo-1454944338482-a69bb95894af?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2104&q=80'
         },
         {
-            id:3,
+            id: 3,
             title: "Chocolate is good for the soul",
             url: "chocolate-is-good-for-the-soul",
             excerpt: "Chops ipsum dipsum..",
-            comments:[],
+            comments: [],
             content: "<b>Hejsan</b> detta är ett inlägg!",
             img: 'https://images.unsplash.com/photo-1526823127573-0fda76b6c24f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80'
         },
@@ -64,16 +64,16 @@ const actions = {
     },
 }
 const mutations = {
-    SET_COMMENT:(state, comment) => {
-        
+    SET_COMMENT: (state, comment) => {
+
         state.blogPosts.find(blogPost => {
-            if(blogPost.id == comment.postId) {
+            if (blogPost.id == comment.postId) {
                 blogPost.comments.push(comment);
                 localStorage.removeItem('posts');
-                localStorage.setItem('posts', JSON.stringify(state.blogPosts));        
+                localStorage.setItem('posts', JSON.stringify(state.blogPosts));
             }
-        }); 
-        
+        });
+
     },
     ADD_BLOGPOST: (state, post) => {
         state.blogPosts.unshift(post);
@@ -89,7 +89,10 @@ const mutations = {
         let post = state.blogPosts.find(post => {
             return post.url == url
         });
-        state.currentPost = post;
+        if (post) {
+            state.currentPost = post;
+        }
+        
     }
 }
 

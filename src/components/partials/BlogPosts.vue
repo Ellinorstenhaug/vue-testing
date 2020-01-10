@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="blogpost--wrapper">
-            <BlogPostPreview :post="blogPost" v-for="(blogPost,i) in blogPosts" :key="i" />
+            <BlogPostCard :post="blogPost" v-for="(blogPost,i) in blogPosts" :key="i" />
         </div>
     </div>
 </template>
@@ -11,11 +11,11 @@
         mapState
     } from 'vuex';
 
-    import BlogPostPreview from './BlogPostPreview';
+    import BlogPostCard from '../layout/Card';
 
     export default {
         components: {
-            BlogPostPreview
+            BlogPostCard
         },
        
         computed: {

@@ -1,6 +1,5 @@
 <template>
-    <router-link :to="`/blog/${post.url}`">
-
+    <router-link :to="'blog/' + post.url">
         <div class="card">
             <img class="card--img" :src="post.img ? post.img : ''" alt="">
             <div class="card--content">
@@ -16,15 +15,11 @@
 
 <script>
     export default {
-        props: {
-            post: {
-                type: Object,
-                required: true
+        props:{
+            post:{
+                type:Object,
+                required:true,
             }
-        },
-        methods: {
-
         }
-
     }
 </script>
