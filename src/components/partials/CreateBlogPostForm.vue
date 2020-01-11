@@ -29,6 +29,8 @@
       </div>
       <button class="my-2" type="submit">Save blogpost</button>
     </form>
+    <p class="submitted" v-if="submitted">Your post has been submitted!</p>
+    <p class="error" v-if="submitted">Your post has been submitted!</p>
   </div>
 </template>
 
@@ -52,6 +54,8 @@
       titleIsInvalid: false,
       contentIsInvalid: false,
       imgIsInvalid: false,
+      submitted:false,
+      showError: false
     }),
     computed: {
       ...mapState('BlogPostHandler', ['blogPosts'])
@@ -82,12 +86,16 @@
         if (this.post.content.length > 0 && this.post.content.length > 0 && this.post.img.length > 0) {
           this.saveBlogPost()
         }
+        else{
+          this.showError
+        }
       },
 
       saveBlogPost() {
         this.post.url = this.generateUrl(this.post.title);
         this.setPostId()
         this.AddPostToLocalStorage(this.post);
+        this.submitted = true;
         this.resetFields()
       },
       setPostId() {

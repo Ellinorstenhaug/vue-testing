@@ -1,8 +1,6 @@
 <template>
-    <div>
-        <div class="blogpost--wrapper">
-            <BlogPostCard :post="blogPost" v-for="(blogPost,i) in blogPosts" :key="i" />
-        </div>
+    <div class="blogpost--wrapper">
+        <BlogPostCard :post="blogPost" v-for="(blogPost,i) in blogPosts" :key="i" />
     </div>
 </template>
 
@@ -17,10 +15,9 @@
         components: {
             BlogPostCard
         },
-       
+
         computed: {
             ...mapState('BlogPostHandler', ['blogPosts']),
         },
-     
     }
 </script>

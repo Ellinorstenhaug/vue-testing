@@ -10,7 +10,7 @@
     import Comments from '../components/partials/Comments'
     import CreateComment from '../components/partials/CreateComment';
     import BlogPostContent from '../components/partials/BlogPostContent';
-import { mapMutations, mapState } from 'vuex';
+import { mapMutations } from 'vuex';
 
     export default {
         components: {
@@ -21,12 +21,7 @@ import { mapMutations, mapState } from 'vuex';
         beforeMount() {
             this.SET_CURRENT_POST(this.$route.params.title);
         },
-        computed: {
-            ...mapState('BlogPostHandler', ['currentPost'])
-        },
-        data: () => ({
-            post: ''
-        }),
+     
         methods: {
             ...mapMutations('BlogPostHandler', ['SET_CURRENT_POST'])
         }

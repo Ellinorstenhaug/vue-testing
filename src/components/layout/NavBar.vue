@@ -4,13 +4,3 @@
         <router-link to="/create">Create new</router-link>
     </div>
 </template>
-
-<script>
-    export default {
-
-    }
-</script>
-
-<style>
-
-</style>
