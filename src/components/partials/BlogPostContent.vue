@@ -1,5 +1,5 @@
 <template>
-    <div class="blogpost--content" v-if="currentPost">
+    <div class="blogpost--content" v-if="currentPost.title">
         <h1>{{currentPost.title}}</h1>
         <p>{{currentPost.excerpt}}</p>
         <img class="blogpost--img" :src="currentPost.img ? currentPost.img : ''" alt="">

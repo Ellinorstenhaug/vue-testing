@@ -6,7 +6,7 @@
       <div class="py-2">
         <label for="title">Title</label>
         <input type="text" id="title" v-model="post.title">
-        <span class="warning" v-if="titleIsInvalid">You have to enter a title!</span>
+        <span class="title-warning" v-if="titleIsInvalid">You have to enter a title!</span>
       </div>
 
       <div class="py-2">
@@ -17,20 +17,20 @@
       <div class="py-2">
         <label for="image">Image (just full path)</label>
         <input type="text" id="image" v-model="post.img">
-        <span class="warning" v-if="imgIsInvalid">Not a valid image</span>
+        <span class="image-warning" v-if="imgIsInvalid">Not a valid image</span>
 
       </div>
 
       <div class="py-2">
         <label for="content">Content</label>
         <textarea id="content" v-model="post.content"></textarea>
-        <span class="warning" v-if="contentIsInvalid">You have to write some content!</span>
+        <span class="content-warning" v-if="contentIsInvalid">You have to write some content!</span>
         <br><span>You can use raw html! :) </span>
       </div>
       <button class="my-2" type="submit">Save blogpost</button>
     </form>
     <p class="submitted" v-if="submitted">Your post has been submitted!</p>
-    <p class="error" v-if="submitted">Your post has been submitted!</p>
+
   </div>
 </template>
 
@@ -84,9 +84,12 @@
         }
 
         if (this.post.content.length > 0 && this.post.content.length > 0 && this.post.img.length > 0) {
+          this.showError = false;
+          this.submitted = true;
+
           this.saveBlogPost()
         } else {
-          this.showError
+          this.showError = true;
         }
       },
 
@@ -94,7 +97,6 @@
         this.post.url = this.generateUrl(this.post.title);
         this.setPostId()
         this.AddPostToLocalStorage(this.post);
-        this.submitted = true;
         this.resetFields()
       },
       setPostId() {

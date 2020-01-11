@@ -23,7 +23,33 @@ describe('BlogPostContent', () => {
     })
     expect(wrapper.isVueInstance()).toBeTruthy()
   })
+
+  it('does not render if it has incorrect state', () => {
+    const wrapper = shallowMount(BlogPostContent, {
+      computed: {
+        currentPost() {
+          return {}
+        }
+      }
+    })
+
+    expect(wrapper.find('.blogpost--content').exists()).toBe(false)
+  })
+  it('renders if it has correct state', () => {
+    const wrapper = shallowMount(BlogPostContent, {
+      computed: {
+        currentPost() {
+          return {
+            title: "title"
+          }
+        }
+      }
+    })
+
+    expect(wrapper.find('.blogpost--content').exists()).toBe(true)
+  })
 })
+
 
 describe('BlogPostContent.vue', () => {
   // test('does not render when it does not have a post', () => {

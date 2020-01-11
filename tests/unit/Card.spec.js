@@ -12,7 +12,7 @@ import Card from '@/components/layout/Card.vue';
 
 
 describe('Card.vue', () => {
-    
+
     test('is a Vue instance', () => {
         const wrapper = shallowMount(Card, {
             propsData: {
@@ -21,7 +21,7 @@ describe('Card.vue', () => {
             stubs: ['router-link']
         })
         expect(wrapper.isVueInstance()).toBeTruthy()
-      })
+    })
 
     it('renders image if image is in prop', () => {
         const wrapper = mount(Card, {
@@ -43,5 +43,15 @@ describe('Card.vue', () => {
             stubs: ['router-link']
         })
         expect(wrapper.find('.card').exists()).toBe(true)
+    })
+
+    it('has correct props', () => {
+        const wrapper = shallowMount(Card, {
+            propsData: {
+                post: {}
+            },
+            stubs: ['router-link']
+        })
+        expect(wrapper.vm.post).toEqual({})
     })
 })

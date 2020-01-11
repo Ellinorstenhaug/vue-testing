@@ -16,6 +16,7 @@ localVue.use(Vuex)
 //* alla inputfält binder till värde
 //* sparar inte om form är invalid (ett inputfält, alla inputfält)
 //* ger errormeddelande om något går fel
+//* : should set correct default data
 
 //todo Om båda fälten är ok => kör saveComment.
 //todo om saveComment körs => kolla att mutation sker via VUEX
@@ -47,6 +48,24 @@ describe('CreateComment', () => {
         const wrapper = shallowMount(CreateComment)
         expect(wrapper.isVueInstance()).toBeTruthy()
     })
+
+    it('should set correct default data', () => {
+
+        const wrapper = shallowMount(CreateComment)
+        expect(wrapper.vm.comment).toEqual({
+            name: "",
+            content: "",
+            postId: '',
+            date: new Date().toUTCString()
+        })
+
+        expect(wrapper.vm.nameIsInvalid).toBe(false)
+        expect(wrapper.vm.contentIsInvalid).toBe(false)
+        expect(wrapper.vm.submitted).toBe(false)
+        expect(wrapper.vm.notValid).toBe(false)
+    })
+
+
 
     it('has a submit button', () => {
         const wrapper = shallowMount(CreateComment)
