@@ -3,7 +3,7 @@ import {
   mount
 } from '@vue/test-utils'
 
-import CreateBlogPostForm from '@/components/partials/CreateBlogPostForm.vue';
+import CreateBlogPostForm from '@/views/CreateBlogPostForm.vue';
 
 
 describe('CreateBlogPostForm', () => {

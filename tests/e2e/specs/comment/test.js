@@ -1,4 +1,4 @@
-describe('Create a comment', () => {
+describe('E2E test flow when creating comment', () => {
     it('creates a valid comment', () => {
         cy.visit('/');
         cy.get('.card').first().click();

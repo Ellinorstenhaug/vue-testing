@@ -43,6 +43,10 @@ describe('CreateComment', () => {
         })
     })
 
+    test('is a Vue instance', () => {
+        const wrapper = shallowMount(CreateComment)
+        expect(wrapper.isVueInstance()).toBeTruthy()
+    })
 
     it('has a submit button', () => {
         const wrapper = shallowMount(CreateComment)

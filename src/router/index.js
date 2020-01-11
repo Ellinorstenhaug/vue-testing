@@ -2,7 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Home from '../views/Home.vue';
 import BlogPost from '../views/BlogPost.vue';
-import CreateBlogPost from '../views/CreateBlogPost.vue';
+import CreateBlogPostForm from '../views/CreateBlogPostForm.vue';
 
 Vue.use(VueRouter)
 
@@ -18,7 +18,7 @@ const routes = [{
   {
     path: '/create',
     name: 'create new',
-    component:CreateBlogPost
+    component:CreateBlogPostForm
   }
 ]
 

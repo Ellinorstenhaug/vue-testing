@@ -54,7 +54,7 @@
       titleIsInvalid: false,
       contentIsInvalid: false,
       imgIsInvalid: false,
-      submitted:false,
+      submitted: false,
       showError: false
     }),
     computed: {
@@ -85,8 +85,7 @@
 
         if (this.post.content.length > 0 && this.post.content.length > 0 && this.post.img.length > 0) {
           this.saveBlogPost()
-        }
-        else{
+        } else {
           this.showError
         }
       },
@@ -113,7 +112,7 @@
           id: null,
           title: "",
           content: "",
-          comments:[],
+          comments: [],
           excerpt: "",
           img: "",
           url: ""

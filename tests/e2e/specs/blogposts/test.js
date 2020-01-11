@@ -1,4 +1,4 @@
-describe('Create an easy blog post from home view', () => {
+describe('E2E test writer flow, from home to final blogpost', () => {
     it('creates a valid blog post from home view', () => {
         cy.visit('/');
 
@@ -16,7 +16,7 @@ describe('Create an easy blog post from home view', () => {
         cy.get('p').should('contain', 'content');    })
 })
 
-describe('gives error message when Content is not entered', () => {
+describe('E2E test invalid blogpost (content missing)', () => {
     it('shows error message when content-field is not filled in', () => {
         cy.visit('/create')
         cy.get('input#title').type("This is a title").should('have.value', 'This is a title')
@@ -28,8 +28,8 @@ describe('gives error message when Content is not entered', () => {
     })
 })
 
-describe('gives error message when title is not entered', () => {
-    it('shows error message when content-field is not filled in', () => {
+describe('E2E test invalid blogpost (title missing)', () => {
+    it('shows error message when title-field is not filled in', () => {
         cy.visit('/create')
         cy.get('input#excerpt').type("This is a short excerpt").should('have.value', 'This is a short excerpt')
         cy.get('input#image').type("https://images.unsplash.com/photo-1577578306649-09e937512e28?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80").should('have.value', 'https://images.unsplash.com/photo-1577578306649-09e937512e28?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80')
@@ -40,8 +40,8 @@ describe('gives error message when title is not entered', () => {
     })
 })
 
-describe('Enter raw html in Content field', () => {
-    it('creates a invalid blog post', () => {
+describe('E2E test blogpost with raw html', () => {
+    it('creates a valid blogpost with raw html in content', () => {
         cy.visit('/create');
         cy.get('input#title').type("title").should('have.value', 'title');
         cy.get('input#excerpt').type("excerpt").should('have.value', 'excerpt');
@@ -54,7 +54,7 @@ describe('Enter raw html in Content field', () => {
     })
 })
 
-describe('Create new blogpost and visit from home', () => {
+describe('E2E test writer flow, visit new blogpost from homepage', () => {
     it('creates a valid blog post, returns to home view and visits post that was just created', () => {
         cy.visit('/');
 
