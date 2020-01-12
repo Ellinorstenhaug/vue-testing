@@ -23,7 +23,7 @@ import { mapMutations } from 'vuex';
         },
      
         methods: {
-            ...mapMutations('BlogPostHandler', ['SET_CURRENT_POST'])
+            ...mapMutations(['SET_CURRENT_POST'])
         }
     }
 </script>

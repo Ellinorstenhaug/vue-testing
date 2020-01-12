@@ -13,7 +13,7 @@
     } from 'vuex'
     export default {
         computed: {
-            ...mapState('BlogPostHandler', ['currentPost'])
+            ...mapState(['currentPost'])
         }
     }
 </script>

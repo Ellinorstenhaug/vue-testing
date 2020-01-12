@@ -20,7 +20,7 @@
       this.MERGE_BLOGPOSTS()
     },
     methods: {
-      ...mapMutations('BlogPostHandler', ['MERGE_BLOGPOSTS'])
+      ...mapMutations(['MERGE_BLOGPOSTS'])
     }
   };
 </script>

@@ -17,7 +17,7 @@
         },
 
         computed: {
-            ...mapState('BlogPostHandler', ['blogPosts']),
+            ...mapState(['blogPosts']),
         },
     }
 </script>

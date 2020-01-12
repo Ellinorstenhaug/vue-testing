@@ -42,10 +42,10 @@
       notValid: false, 
     }),
     computed: {
-      ...mapState('BlogPostHandler', ['currentPost', 'blogPosts'])
+      ...mapState(['currentPost', 'blogPosts'])
     },
     methods: {
-      ...mapMutations('BlogPostHandler', ['SET_COMMENT']),
+      ...mapMutations(['SET_COMMENT']),
       validate() {
 
         //refaktorisera 

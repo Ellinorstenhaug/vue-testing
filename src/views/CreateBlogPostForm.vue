@@ -58,11 +58,11 @@
       showError: false
     }),
     computed: {
-      ...mapState('BlogPostHandler', ['blogPosts'])
+      ...mapState(['blogPosts'])
     },
-    methods: {
-      ...mapActions('BlogPostHandler', ['AddPostToLocalStorage']),
-      ...mapMutations('BlogPostHandler', ['ADD_POST']),
+      methods: {
+      ...mapActions(['AddPostToLocalStorage']),
+      ...mapMutations(['ADD_POST']),
       validate() {
         //Make regex for image (contains http...)        
         if (this.post.title.length == 0) {
