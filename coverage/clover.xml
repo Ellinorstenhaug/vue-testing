@@ -1,12 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1578783888079" clover="3.2.0">
-  <project timestamp="1578783888080" name="All files">
-    <metrics statements="43" coveredstatements="25" conditionals="17" coveredconditionals="14" methods="11" coveredmethods="5" elements="71" coveredelements="44" complexity="0" loc="43" ncloc="43" packages="2" files="5" classes="5"/>
-    <package name="components.partials">
+<coverage generated="1578849716783" clover="3.2.0">
+  <project timestamp="1578849716783" name="All files">
+    <metrics statements="60" coveredstatements="42" conditionals="23" coveredconditionals="17" methods="15" coveredmethods="9" elements="98" coveredelements="68" complexity="0" loc="60" ncloc="60" packages="3" files="7" classes="7"/>
+    <package name="src">
+      <metrics statements="12" coveredstatements="12" conditionals="6" coveredconditionals="3" methods="3" coveredmethods="3"/>
+      <file name="App.vue" path="/Users/ellinorstenhaug/Desktop/Utbildning/Nackademin/Javascript 4/Blogg/src/App.vue">
+        <metrics statements="12" coveredstatements="12" conditionals="6" coveredconditionals="3" methods="3" coveredmethods="3"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="28" count="1" type="stmt"/>
+        <line num="34" count="1" type="stmt"/>
+        <line num="36" count="1" type="cond" truecount="2" falsecount="2"/>
+        <line num="37" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="38" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.components.partials">
       <metrics statements="20" coveredstatements="13" conditionals="6" coveredconditionals="5" methods="5" coveredmethods="3"/>
       <file name="BlogPostContent.vue" path="/Users/ellinorstenhaug/Desktop/Utbildning/Nackademin/Javascript 4/Blogg/src/components/partials/BlogPostContent.vue">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="11" count="1" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
       </file>
       <file name="BlogPosts.vue" path="/Users/ellinorstenhaug/Desktop/Utbildning/Nackademin/Javascript 4/Blogg/src/components/partials/BlogPosts.vue">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
@@ -15,11 +33,11 @@
       </file>
       <file name="Comments.vue" path="/Users/ellinorstenhaug/Desktop/Utbildning/Nackademin/Javascript 4/Blogg/src/components/partials/Comments.vue">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="14" count="1" type="stmt"/>
+        <line num="14" count="2" type="stmt"/>
       </file>
       <file name="CreateComment.vue" path="/Users/ellinorstenhaug/Desktop/Utbildning/Nackademin/Javascript 4/Blogg/src/components/partials/CreateComment.vue">
         <metrics statements="16" coveredstatements="9" conditionals="6" coveredconditionals="5" methods="5" coveredmethods="3"/>
-        <line num="26" count="1" type="stmt"/>
+        <line num="26" count="2" type="stmt"/>
         <line num="32" count="10" type="stmt"/>
         <line num="52" count="4" type="stmt"/>
         <line num="54" count="4" type="stmt"/>
@@ -37,8 +55,16 @@
         <line num="82" count="0" type="stmt"/>
       </file>
     </package>
-    <package name="views">
-      <metrics statements="23" coveredstatements="12" conditionals="11" coveredconditionals="9" methods="6" coveredmethods="2"/>
+    <package name="src.views">
+      <metrics statements="28" coveredstatements="17" conditionals="11" coveredconditionals="9" methods="7" coveredmethods="3"/>
+      <file name="BlogPost.vue" path="/Users/ellinorstenhaug/Desktop/Utbildning/Nackademin/Javascript 4/Blogg/src/views/BlogPost.vue">
+        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+      </file>
       <file name="CreateBlogPostForm.vue" path="/Users/ellinorstenhaug/Desktop/Utbildning/Nackademin/Javascript 4/Blogg/src/views/CreateBlogPostForm.vue">
         <metrics statements="23" coveredstatements="12" conditionals="11" coveredconditionals="9" methods="6" coveredmethods="2"/>
         <line num="38" count="2" type="stmt"/>

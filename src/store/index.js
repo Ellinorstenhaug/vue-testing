@@ -98,6 +98,7 @@ const mutations = {
       return post.url == url
     });
     if (post) {
+      console.log(post)
       state.currentPost = post;
     }
 

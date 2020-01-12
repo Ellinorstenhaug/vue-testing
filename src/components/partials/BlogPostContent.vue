@@ -2,7 +2,7 @@
     <div class="blogpost--content" v-if="currentPost.title">
         <h1>{{currentPost.title}}</h1>
         <p>{{currentPost.excerpt}}</p>
-        <img class="blogpost--img" :src="currentPost.img ? currentPost.img : ''" alt="">
+        <img class="blogpost--img" v-if="currentPost.img" :src="currentPost.img" alt="">
         <p v-html="currentPost.content"></p>
     </div>
 </template>

@@ -1,5 +1,4 @@
 import Vuex from 'vuex';
-import VueRouter from 'vue-router';
 
 import {
     shallowMount,
@@ -8,7 +7,6 @@ import {
 import BlogPost from '@/views/BlogPost.vue';
 
 const localVue = createLocalVue()
-
 localVue.use(Vuex)
 
 const mutations = {
@@ -24,6 +22,13 @@ describe('App.vue', () => {
         const wrapper = shallowMount(BlogPost, {
             store,
             localVue,
+            mocks:{
+                $route: {
+                    params: {
+                        title: "test"
+                    }
+                }
+            }
         })
 
         await wrapper.vm.$nextTick()
