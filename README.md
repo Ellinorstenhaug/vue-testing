@@ -1,5 +1,23 @@
 # blog
 
+## Testing
+
+### Unit tests
+```
+npm run test
+```
+### E2E test with Cypress
+
+```
+npx cypress open
+```
+
+### See test coverage 
+```
+npm run test -- --collect-coverage --watchAll=false
+```
+
+
 ## Project setup
 ```
 npm install
