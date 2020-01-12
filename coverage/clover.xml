@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1578849716783" clover="3.2.0">
-  <project timestamp="1578849716783" name="All files">
-    <metrics statements="60" coveredstatements="42" conditionals="23" coveredconditionals="17" methods="15" coveredmethods="9" elements="98" coveredelements="68" complexity="0" loc="60" ncloc="60" packages="3" files="7" classes="7"/>
+<coverage generated="1578860361520" clover="3.2.0">
+  <project timestamp="1578860361520" name="All files">
+    <metrics statements="60" coveredstatements="58" conditionals="23" coveredconditionals="19" methods="15" coveredmethods="15" elements="98" coveredelements="92" complexity="0" loc="60" ncloc="60" packages="3" files="7" classes="7"/>
     <package name="src">
       <metrics statements="12" coveredstatements="12" conditionals="6" coveredconditionals="3" methods="3" coveredmethods="3"/>
       <file name="App.vue" path="/Users/ellinorstenhaug/Desktop/Utbildning/Nackademin/Javascript 4/Blogg/src/App.vue">
@@ -21,7 +21,7 @@
       </file>
     </package>
     <package name="src.components.partials">
-      <metrics statements="20" coveredstatements="13" conditionals="6" coveredconditionals="5" methods="5" coveredmethods="3"/>
+      <metrics statements="20" coveredstatements="18" conditionals="6" coveredconditionals="5" methods="5" coveredmethods="5"/>
       <file name="BlogPostContent.vue" path="/Users/ellinorstenhaug/Desktop/Utbildning/Nackademin/Javascript 4/Blogg/src/components/partials/BlogPostContent.vue">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="11" count="2" type="stmt"/>
@@ -36,27 +36,27 @@
         <line num="14" count="2" type="stmt"/>
       </file>
       <file name="CreateComment.vue" path="/Users/ellinorstenhaug/Desktop/Utbildning/Nackademin/Javascript 4/Blogg/src/components/partials/CreateComment.vue">
-        <metrics statements="16" coveredstatements="9" conditionals="6" coveredconditionals="5" methods="5" coveredmethods="3"/>
+        <metrics statements="16" coveredstatements="14" conditionals="6" coveredconditionals="5" methods="5" coveredmethods="5"/>
         <line num="26" count="2" type="stmt"/>
-        <line num="32" count="10" type="stmt"/>
+        <line num="32" count="14" type="stmt"/>
         <line num="52" count="4" type="stmt"/>
         <line num="54" count="4" type="stmt"/>
         <line num="56" count="4" type="cond" truecount="3" falsecount="1"/>
         <line num="57" count="0" type="stmt"/>
         <line num="58" count="0" type="stmt"/>
         <line num="61" count="4" type="stmt"/>
-        <line num="66" count="8" type="cond" truecount="2" falsecount="0"/>
-        <line num="67" count="5" type="stmt"/>
-        <line num="69" count="3" type="stmt"/>
-        <line num="74" count="0" type="stmt"/>
-        <line num="75" count="0" type="stmt"/>
-        <line num="76" count="0" type="stmt"/>
-        <line num="77" count="0" type="stmt"/>
-        <line num="82" count="0" type="stmt"/>
+        <line num="66" count="10" type="cond" truecount="2" falsecount="0"/>
+        <line num="67" count="6" type="stmt"/>
+        <line num="69" count="4" type="stmt"/>
+        <line num="74" count="1" type="stmt"/>
+        <line num="75" count="1" type="stmt"/>
+        <line num="76" count="1" type="stmt"/>
+        <line num="77" count="1" type="stmt"/>
+        <line num="82" count="2" type="stmt"/>
       </file>
     </package>
     <package name="src.views">
-      <metrics statements="28" coveredstatements="17" conditionals="11" coveredconditionals="9" methods="7" coveredmethods="3"/>
+      <metrics statements="28" coveredstatements="28" conditionals="11" coveredconditionals="11" methods="7" coveredmethods="7"/>
       <file name="BlogPost.vue" path="/Users/ellinorstenhaug/Desktop/Utbildning/Nackademin/Javascript 4/Blogg/src/views/BlogPost.vue">
         <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="10" count="1" type="stmt"/>
@@ -66,30 +66,30 @@
         <line num="22" count="1" type="stmt"/>
       </file>
       <file name="CreateBlogPostForm.vue" path="/Users/ellinorstenhaug/Desktop/Utbildning/Nackademin/Javascript 4/Blogg/src/views/CreateBlogPostForm.vue">
-        <metrics statements="23" coveredstatements="12" conditionals="11" coveredconditionals="9" methods="6" coveredmethods="2"/>
-        <line num="38" count="2" type="stmt"/>
-        <line num="44" count="11" type="stmt"/>
-        <line num="68" count="2" type="cond" truecount="2" falsecount="0"/>
+        <metrics statements="23" coveredstatements="23" conditionals="11" coveredconditionals="11" methods="6" coveredmethods="6"/>
+        <line num="38" count="1" type="stmt"/>
+        <line num="44" count="16" type="stmt"/>
+        <line num="68" count="3" type="cond" truecount="2" falsecount="0"/>
         <line num="69" count="1" type="stmt"/>
-        <line num="71" count="1" type="stmt"/>
-        <line num="74" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="71" count="2" type="stmt"/>
+        <line num="74" count="3" type="cond" truecount="2" falsecount="0"/>
         <line num="75" count="1" type="stmt"/>
-        <line num="77" count="1" type="stmt"/>
-        <line num="80" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="77" count="2" type="stmt"/>
+        <line num="80" count="3" type="cond" truecount="2" falsecount="0"/>
         <line num="81" count="2" type="stmt"/>
-        <line num="83" count="0" type="stmt"/>
-        <line num="86" count="2" type="cond" truecount="4" falsecount="1"/>
-        <line num="87" count="0" type="stmt"/>
-        <line num="88" count="0" type="stmt"/>
-        <line num="90" count="0" type="stmt"/>
+        <line num="83" count="1" type="stmt"/>
+        <line num="86" count="3" type="cond" truecount="5" falsecount="0"/>
+        <line num="87" count="1" type="stmt"/>
+        <line num="88" count="1" type="stmt"/>
+        <line num="90" count="1" type="stmt"/>
         <line num="92" count="2" type="stmt"/>
-        <line num="97" count="0" type="stmt"/>
-        <line num="98" count="0" type="stmt"/>
-        <line num="99" count="0" type="stmt"/>
-        <line num="100" count="0" type="stmt"/>
-        <line num="103" count="0" type="stmt"/>
-        <line num="107" count="0" type="stmt"/>
-        <line num="113" count="0" type="stmt"/>
+        <line num="97" count="2" type="stmt"/>
+        <line num="98" count="2" type="stmt"/>
+        <line num="99" count="2" type="stmt"/>
+        <line num="100" count="2" type="stmt"/>
+        <line num="103" count="2" type="stmt"/>
+        <line num="107" count="4" type="stmt"/>
+        <line num="113" count="3" type="stmt"/>
       </file>
     </package>
   </project>

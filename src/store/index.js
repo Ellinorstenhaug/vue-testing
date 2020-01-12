@@ -71,14 +71,12 @@ const actions = {
 }
 const mutations = {
   SET_COMMENT: (state, comment) => {
-    console.log("hej", comment);
     state.blogPosts.find(blogPost => {
       if (blogPost.id == comment.postId) {
         blogPost.comments.push(comment);
         localStorage.removeItem('posts');
         let blogPostState = state.blogPosts;
         localStorage.setItem('posts', JSON.stringify(blogPostState));
-        console.log("halloj", comment);
       }
     });
 
@@ -98,7 +96,6 @@ const mutations = {
       return post.url == url
     });
     if (post) {
-      console.log(post)
       state.currentPost = post;
     }
 

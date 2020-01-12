@@ -10,48 +10,33 @@ import CreateComment from '@/components/partials/CreateComment.vue';
 const localVue = createLocalVue()
 localVue.use(Vuex)
 
-//Test att köra: 
-//* har en submitknapp
-//* kör validator on submit
-//* alla inputfält binder till värde
-//* sparar inte om form är invalid (ett inputfält, alla inputfält)
-//* ger errormeddelande om något går fel
-//* : should set correct default data
+const state = {
+    blogPosts: [{
+        id: 1
+    }],
+    currentPost: {
+        id: 100
+    }
+}
+const mutations = {
+    SET_COMMENT: jest.fn()
+};
 
-//todo Om båda fälten är ok => kör saveComment.
-//todo om saveComment körs => kolla att mutation sker via VUEX
-//todo Om saveComment körs - kör resetFields och töm fälten
-// todo: submit - läggs det till meddelande "tack för din kommentar"
+const store = new Vuex.Store({
+    state,
+    mutations,
+})
 
-// todo: VUEX - läggs det till i LS?
-// todo: VUEX - läggs det till i LS?
 
 describe('CreateComment', () => {
-    let actions, mutations, store;
-
-    beforeEach(() => {
-        actions = {
-                actionClick: jest.fn(),
-                actionInput: jest.fn()
-            },
-            mutations = {
-                SET_COMMENT: jest.fn()
-            }
-
-        store = new Vuex.Store({
-            actions,
-            mutations
-        })
-    })
-
     test('is a Vue instance', () => {
         const wrapper = shallowMount(CreateComment)
         expect(wrapper.isVueInstance()).toBeTruthy()
     })
 
     it('should set correct default data', () => {
+        const wrapper = shallowMount(CreateComment);
 
-        const wrapper = shallowMount(CreateComment)
         expect(wrapper.vm.comment).toEqual({
             name: "",
             content: "",
@@ -65,6 +50,15 @@ describe('CreateComment', () => {
         expect(wrapper.vm.notValid).toBe(false)
     })
 
+    it('has correct initial state from vuex', () => {
+        const wrapper = shallowMount(CreateComment, {
+            store,
+            localVue
+        })
+
+        expect(wrapper.vm.blogPosts).toBe(state.blogPosts)
+        expect(wrapper.vm.currentPost).toBe(state.currentPost)
+    })
 
 
     it('has a submit button', () => {
@@ -100,9 +94,8 @@ describe('CreateComment', () => {
         expect(wrapper.vm.comment.content).toBe('a value')
     })
 
-
     it('does not save comment if nameInput is invalid', () => {
-        const wrapper = mount(CreateComment, {
+        const wrapper = shallowMount(CreateComment, {
             data() {
                 return {
                     comment: {
@@ -118,7 +111,7 @@ describe('CreateComment', () => {
     });
 
     it('does not save comment if contentInput is invalid', () => {
-        const wrapper = mount(CreateComment, {
+        const wrapper = shallowMount(CreateComment, {
             data() {
                 return {
                     comment: {
@@ -132,8 +125,9 @@ describe('CreateComment', () => {
         wrapper.vm.validate()
         expect(wrapper.vm.notValid).toBe(true)
     });
+
     it('does not save comment if is not filled in', () => {
-        const wrapper = mount(CreateComment, {
+        const wrapper = shallowMount(CreateComment, {
             data() {
                 return {
                     comment: {
@@ -148,8 +142,20 @@ describe('CreateComment', () => {
         expect(wrapper.vm.notValid).toBe(true)
     });
 
+    it('runs SET_COMMENT mutation if model is valid', async () => {
+        const wrapper = shallowMount(CreateComment, {
+            store,
+            localVue,
+        })
+
+        wrapper.vm.saveComment()
+        await wrapper.vm.$nextTick()
+        expect(mutations.SET_COMMENT).toHaveBeenCalled()
+    })
+
+
     it('gives error message if comment is invalid', () => {
-        const wrapper = mount(CreateComment, {
+        const wrapper = shallowMount(CreateComment, {
             data() {
                 return {
                     comment: {
@@ -165,62 +171,56 @@ describe('CreateComment', () => {
         expect(wrapper.find('.notvalid').exists()).toBe(true)
     });
 
-    //! HÄR
 
-    // it("dispatch a namespaced action when form is submitted", async () => {
+    it('validateInput method returns false when input should be invalid', () => {
+        const wrapper = shallowMount(CreateComment)
+        const returnedBoolean = wrapper.vm.validateInput('');
+        expect(returnedBoolean).toBe(false)
+    })
 
-    //     const wrapper = shallowMount(CreateComment, {
-    //         data(){
-    //             return {
-    //                 comment: {
-    //                     name: 'test',
-    //                     content: "hejs",
-    //                 }
-    //             }
-    //         },
-    //         computed: {
-    //             currentPost(){
-    //                 return {id: 20}
-    //             }
-    //         },
-    //         store,
-    //         localVue
-    //     })
+    it('validateInput method returns true when input should be valid', () => {
+        const wrapper = shallowMount(CreateComment)
+        const returnedBoolean = wrapper.vm.validateInput('valid input');
+        expect(returnedBoolean).toBe(true)
+    })
 
 
-    //     // wrapper.find("form").trigger("submit");
-    //     wrapper.vm.validate()
-    //     await wrapper.vm.$nextTick()
-    //     expect(wrapper.vm.submitted).toBe(true)
+    it('resets comment-model after successful submit', async () => {
+        const wrapper = shallowMount(CreateComment, {
+            store,
+            localVue,
+            data: () => ({
+                comment: {
+                    name: "Name",
+                    content: "Content",
+                }
+            })
+        });
 
-    //     expect(mutations.SET_COMMENT).toHaveBeenCalled()
-    // })
+        wrapper.vm.resetFields();
 
-    // it('confirms the valid comment has been sent with message', () => {
-    //     const wrapper = mount(CreateComment, {
-    //         data() {
-    //             return {
-    //                 comment: {
-    //                     name: 'test',
-    //                     content: "test",
+        expect(wrapper.vm.comment).toEqual({
+            name: "",
+            content: "",
+        })
+    })
 
-    //                 },
+    it('shows success message after submitting valid comment', async () => {
+        const wrapper = shallowMount(CreateComment, {
+            store,
+            localVue,
+            data() {
+                return {
+                    comment: {
+                        name: "Name",
+                        content: "Content",
+                    }
+                }
+            },
+        });
 
-    //             }
-    //         },
-    //         computed: {
-    //             currentPost() {
-    //                 return {
-    //                     id: 20
-    //                 }
-    //             }
-    //         }
-    //     });
-    //     console.log(wrapper.vm.currentPost.id);
-    //     wrapper.vm.validate();
-    //     expect(wrapper.vm.$data.submitted).toBe(true)
-
-    // })
-
-
+        wrapper.vm.validate()
+        expect(wrapper.vm.submitted).toBe(true)
+        expect(wrapper.find('.submitted').text()).toBe('Your comment has been submitted!')
+    })
 });

@@ -7,7 +7,7 @@ import Card from '@/components/layout/Card.vue';
 
 // * renderar bild endast om image finns som prop
 // * har .card
-// todo visas om prop finns
+// * visas om prop finns
 // todo kolla router ? 
 
 
@@ -35,6 +35,7 @@ describe('Card.vue', () => {
 
         expect(wrapper.find('img').exists()).toBe(true)
     })
+    
     it('has card class', () => {
         const wrapper = mount(Card, {
             propsData: {

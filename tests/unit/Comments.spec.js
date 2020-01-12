@@ -1,27 +1,60 @@
-// todo renderas bara om har state currentPost.comments
-// todo listar ut rätt mängd kommentarer currentPost.comments
-
+import Vuex from 'vuex';
 import {
     shallowMount,
-    mount
+    createLocalVue
 } from '@vue/test-utils'
 
 import Comments from '@/components/partials/Comments';
+
+const localVue = createLocalVue()
+localVue.use(Vuex);
+
+const state = {
+    currentPost: {
+            comments: [{
+                name: "test"
+            }]
+        },
+        
+};
+
+const store = new Vuex.Store({
+    state
+})
+
 
 describe('Comments', () => {
     test('is a Vue instance', () => {
 
         const wrapper = shallowMount(Comments, {
-            computed: {
-                currentPost() {
-                    return {
-                        comments: [{
-                            name:""
-                        }]
-                    }
+            store,
+            localVue
+        })
+        expect(wrapper.isVueInstance()).toBeTruthy()
+    })
+
+    it('renders if Comments.vue has correct state', ()=>{
+        const wrapper = shallowMount(Comments, {
+            store,localVue
+        })
+
+        expect(wrapper.find('.comments').exists()).toBe(true);
+    })
+
+    it('does not render if Comments.vue has incorrect state', ()=>{
+        const wrapper = shallowMount(Comments, {
+            computed:{
+                currentPost(){
+                    return {}
                 }
             }
         })
-        expect(wrapper.isVueInstance()).toBeTruthy()
+        expect(wrapper.find('.comments').exists()).toBe(false);
+    })
+    it('renders correct amount of comments', ()=>{
+        const wrapper = shallowMount(Comments, {
+           store, localVue
+        })
+        expect(wrapper.findAll('.comment').length).toBe(1);
     })
 })

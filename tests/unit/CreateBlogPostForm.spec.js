@@ -1,25 +1,34 @@
-//Test att köra: 
-//* har en submitknapp
-//* kör validator on submit
-//* alla inputfält binder till värde
-//* sparar inte om form är invalid (ett inputfält, alla inputfält)
-//* ger errormeddelande om något går fel
-//* should set correct default data
-
-//todo Om båda fälten är ok => kör saveComment.
-//todo om saveComment körs => kolla att mutation sker via VUEX
-//todo Om saveComment körs - kör resetFields och töm fälten
-// todo: submit - läggs det till meddelande "tack för din kommentar"
-
-// todo: VUEX - läggs det till i LS?
-// todo: VUEX - läggs det till i LS?
-
+import Vuex from 'vuex';
 import {
     mount,
     shallowMount,
-} from '@vue/test-utils'
-
+    createLocalVue
+} from '@vue/test-utils';
 import CreateBlogPostForm from '@/views/CreateBlogPostForm';
+
+
+const localVue = createLocalVue()
+localVue.use(Vuex);
+
+const state = {
+    blogPosts: [{
+        id: 1
+    }]
+}
+const mutations = {
+
+};
+
+const actions = {
+    AddPostToLocalStorage: jest.fn()
+};
+
+const store = new Vuex.Store({
+    state,
+    mutations,
+    actions
+})
+
 
 describe('CreateBlogPostForm', () => {
     test('is a Vue instance', () => {
@@ -43,7 +52,7 @@ describe('CreateBlogPostForm', () => {
         wrapper.find('form').trigger('submit');
         expect(validate).toHaveBeenCalled()
     })
-
+    
 
     it('Title input binds value', () => {
         const wrapper = shallowMount(CreateBlogPostForm);
@@ -96,6 +105,17 @@ describe('CreateBlogPostForm', () => {
 
     })
 
+    it('runs AddPostToLocalStorage action if model is valid', async () => {
+        const wrapper = shallowMount(CreateBlogPostForm, {
+            store,
+            localVue,
+        })
+
+        wrapper.vm.saveBlogPost()
+        await wrapper.vm.$nextTick()
+        expect(actions.AddPostToLocalStorage).toHaveBeenCalled()
+    })
+
     it('does not save blog post if Content is invalid', async () => {
         const wrapper = shallowMount(CreateBlogPostForm, {
             data() {
@@ -133,32 +153,89 @@ describe('CreateBlogPostForm', () => {
         expect(wrapper.vm.showError).toBe(false)
     })
 
-    // it('shows success message after submitting valid blog post', async () => {
-    //     const wrapper = shallowMount(CreateBlogPostForm, {
-    //         data() {
-    //             return {
-    //                 post: {
-    //                     title: "title",
-    //                     content: "content",
-    //                     img: "picture.png",
-    //                 },
-    //             }
-    //         },
-    //         computed: {
-    //             blogPosts() {
-    //                 return [
-    //                     '', ''
-    //                 ]
-    //             }
-    //         }, 
-    //         // methods:{
-    //         //     AddPostToLocalStorage: jest.fn("post")
-    //         // }
-    //     });
+    it('has correct state from vuex', () => {
+        const wrapper = shallowMount(CreateBlogPostForm, {
+            store,
+            localVue
+        })
 
-    //     // wrapper.find('form').trigger('submit.prevent');
-    //     wrapper.vm.validate()
-    //     expect(wrapper.vm.submitted).toBe(true)
+        expect(wrapper.vm.blogPosts).toBe(state.blogPosts)
+    })
 
-    // })
+
+    it('generateUrl creates a valid URL with easy input', () => {
+        const wrapper = shallowMount(CreateBlogPostForm, {
+            store,
+            localVue,
+        })
+        const test = wrapper.vm.generateUrl("testing testing");
+        expect(test).toBe("testing-testing")
+    })
+
+    it('generateUrl creates a valid URL with unallowed characters', () => {
+        const wrapper = shallowMount(CreateBlogPostForm, {
+            store,
+            localVue,
+        })
+        const test = wrapper.vm.generateUrl("@£$testing !testing$");
+        expect(test).toBe("testing-testing")
+    })
+
+    it('shows success message after submitting valid blog post', async () => {
+        const wrapper = shallowMount(CreateBlogPostForm, {
+            store,
+            localVue,
+            data() {
+                return {
+                    post: {
+                        title: "title",
+                        content: "content",
+                        img: "picture.png",
+                    },
+                }
+            },
+            computed: {
+                blogPosts() {
+                    return [
+                        '', ''
+                    ]
+                }
+            },
+
+        });
+
+        wrapper.vm.validate()
+        expect(wrapper.vm.submitted).toBe(true)
+        expect(wrapper.find('.submitted').text()).toBe('Your post has been submitted!')
+    })
+
+
+    it('resets post-model after successful submit', async () => {
+        const wrapper = shallowMount(CreateBlogPostForm, {
+            store,
+            localVue,
+            data: () => ({
+                post: {
+                    id: 100,
+                    title: "title",
+                    content: "content",
+                    excerpt: "excerpt",
+                    comments: [],
+                    img: "",
+                    url: "title"
+                }
+            })
+        });
+
+        wrapper.vm.resetFields();
+        expect(wrapper.vm.post).toEqual({
+            id: null,
+            title: "",
+            content: "",
+            excerpt: "",
+            comments: [],
+            img: "",
+            url: ""
+        })
+    })
 })

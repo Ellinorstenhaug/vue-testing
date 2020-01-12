@@ -17,7 +17,7 @@
       </div>
       <button class="my-2" type="submit">Send comment!</button>
     </form>
-    <p class="valid" v-if="submitted">Your comment has been posted</p>
+    <p class="submitted" v-if="submitted">Your comment has been submitted!</p>
     <p class="notvalid" v-if="notValid">Please fill in all fields</p>
   </div>
 </template>
