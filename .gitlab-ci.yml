@@ -6,3 +6,15 @@ test:
     - npm install 
   script:
     - npm run test
+
+pages:
+  stage: deploy
+  before_script: 
+    - npm install
+  script:
+    - npm run build
+  artifacts:
+    paths:
+      - public
+  only:
+    - master
