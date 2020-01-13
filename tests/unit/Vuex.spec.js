@@ -1,10 +1,3 @@
-// todo testa LS
-// todo testa pusha till state blogPosts från mutation ADD_BLOG_POST
-// todo kolla om statet ändras  med MERGE_BLOGPOSTS
-// todo testa SET_CURRENT_POST, hittar den en från arrayen och pushar till den? 
-// todo: VUEX - läggs det till i LS?
-// todo: VUEX - läggs det till i LS?
-
 import {
   mutations
 } from '@/store/index.js';

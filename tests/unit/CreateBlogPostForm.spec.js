@@ -52,7 +52,7 @@ describe('CreateBlogPostForm', () => {
         wrapper.find('form').trigger('submit');
         expect(validate).toHaveBeenCalled()
     })
-    
+
 
     it('Title input binds value', () => {
         const wrapper = shallowMount(CreateBlogPostForm);
@@ -85,54 +85,6 @@ describe('CreateBlogPostForm', () => {
         expect(wrapper.vm.post.content).toBe('this is some content');
     })
 
-    it('does not save blog post if title is invalid', async () => {
-        const wrapper = shallowMount(CreateBlogPostForm, {
-            data() {
-                return {
-                    post: {
-                        title: "",
-                        content: "content",
-                    },
-                }
-            }
-        })
-
-        wrapper.vm.validate();
-        await wrapper.vm.$nextTick()
-
-        expect(wrapper.find('.title-warning').exists()).toBe(true)
-        expect(wrapper.vm.showError).toBe(true)
-
-    })
-
-    it('runs AddPostToLocalStorage action if model is valid', async () => {
-        const wrapper = shallowMount(CreateBlogPostForm, {
-            store,
-            localVue,
-        })
-
-        wrapper.vm.saveBlogPost()
-        await wrapper.vm.$nextTick()
-        expect(actions.AddPostToLocalStorage).toHaveBeenCalled()
-    })
-
-    it('does not save blog post if Content is invalid', async () => {
-        const wrapper = shallowMount(CreateBlogPostForm, {
-            data() {
-                return {
-                    post: {
-                        title: "title",
-                        content: "",
-                    },
-                }
-            }
-        })
-
-        wrapper.vm.validate();
-        await wrapper.vm.$nextTick()
-        expect(wrapper.find('.content-warning').exists()).toBe(true)
-        expect(wrapper.vm.showError).toBe(true)
-    })
 
     it('should set correct default data', () => {
         const wrapper = shallowMount(CreateBlogPostForm)
@@ -181,34 +133,6 @@ describe('CreateBlogPostForm', () => {
         expect(test).toBe("testing-testing")
     })
 
-    it('shows success message after submitting valid blog post', async () => {
-        const wrapper = shallowMount(CreateBlogPostForm, {
-            store,
-            localVue,
-            data() {
-                return {
-                    post: {
-                        title: "title",
-                        content: "content",
-                        img: "picture.png",
-                    },
-                }
-            },
-            computed: {
-                blogPosts() {
-                    return [
-                        '', ''
-                    ]
-                }
-            },
-
-        });
-
-        wrapper.vm.validate()
-        expect(wrapper.vm.submitted).toBe(true)
-        expect(wrapper.find('.submitted').text()).toBe('Your post has been submitted!')
-    })
-
 
     it('resets post-model after successful submit', async () => {
         const wrapper = shallowMount(CreateBlogPostForm, {
@@ -238,4 +162,83 @@ describe('CreateBlogPostForm', () => {
             url: ""
         })
     })
+
+
+
+    //exempel på integrationstest 
+    it('does not save blog post if title is invalid', async () => {
+        const wrapper = shallowMount(CreateBlogPostForm, {
+            data() {
+                return {
+                    post: {
+                        title: "",
+                        content: "content",
+                    },
+                }
+            }
+        })
+
+        wrapper.vm.validate();
+        await wrapper.vm.$nextTick();
+        expect(wrapper.find('.title-warning').exists()).toBe(true);
+        expect(wrapper.vm.showError).toBe(true);
+    })
+
+    it('does not save blog post if Content is invalid', async () => {
+        const wrapper = shallowMount(CreateBlogPostForm, {
+            data() {
+                return {
+                    post: {
+                        title: "title",
+                        content: "",
+                    },
+                }
+            }
+        })
+
+        wrapper.vm.validate();
+        await wrapper.vm.$nextTick()
+        expect(wrapper.find('.content-warning').exists()).toBe(true)
+        expect(wrapper.vm.showError).toBe(true)
+    })
+
+    it('shows success message after submitting valid blog post', async () => {
+        const wrapper = shallowMount(CreateBlogPostForm, {
+            store,
+            localVue,
+            data() {
+                return {
+                    post: {
+                        title: "title",
+                        content: "content",
+                        img: "picture.png",
+                    },
+                }
+            },
+            computed: {
+                blogPosts() {
+                    return [
+                        '', ''
+                    ]
+                }
+            },
+
+        });
+
+        wrapper.vm.validate()
+        expect(wrapper.vm.submitted).toBe(true)
+        expect(wrapper.find('.submitted').text()).toBe('Your post has been submitted!')
+    })
+
+    it('runs AddPostToLocalStorage action if model is valid', async () => {
+        const wrapper = shallowMount(CreateBlogPostForm, {
+            store,
+            localVue,
+        })
+
+        wrapper.vm.saveBlogPost()
+        await wrapper.vm.$nextTick()
+        expect(actions.AddPostToLocalStorage).toHaveBeenCalled()
+    })
+
 })
