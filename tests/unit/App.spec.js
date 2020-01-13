@@ -3,7 +3,7 @@ import {
     shallowMount,
     createLocalVue
 } from '@vue/test-utils';
-import App from '@/app.vue';
+import App from '@/App.vue';
 
 
 const localVue = createLocalVue()
