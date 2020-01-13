@@ -1,16 +1,5 @@
 // https://docs.cypress.io/api/introduction/api.html
-
-
-//Skapa ett inlägg
-
-// 1. Besök /create
-// 2. Fyll i formulär
-// 3. Spara formulär
-//! 4. kolla att konfirmationsmeddelande kom
-// 2. Besök url
-
-
-describe('Create a easy blog post', () => {
+describe('Create an easy blog post', () => {
   it('creates a valid blog post', () => {
     cy.visit('/create')
     cy.get('input#title').type("title")

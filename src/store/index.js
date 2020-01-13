@@ -3,8 +3,7 @@ import Vuex from 'vuex';
 
 Vue.use(Vuex);
 
-
-const state = {
+export const state = {
   blogPosts: [{
       id: 1,
       title: "Food is important",
@@ -49,11 +48,8 @@ const state = {
   ],
   currentPost: undefined
 }
-const getters = {
 
-
-}
-const actions = {
+export const actions = {
   AddPostToLocalStorage({
     commit
   }, post) {
@@ -69,7 +65,7 @@ const actions = {
     commit('ADD_BLOGPOST', post)
   },
 }
-const mutations = {
+export const mutations = {
   SET_COMMENT: (state, comment) => {
     state.blogPosts.find(blogPost => {
       if (blogPost.id == comment.postId) {
@@ -79,11 +75,12 @@ const mutations = {
         localStorage.setItem('posts', JSON.stringify(blogPostState));
       }
     });
-
   },
+
   ADD_BLOGPOST: (state, post) => {
     state.blogPosts.unshift(post);
   },
+
   MERGE_BLOGPOSTS: (state) => {
     let posts = JSON.parse(localStorage.getItem('posts'));
     if (posts !== null) {
@@ -91,6 +88,7 @@ const mutations = {
       state.blogPosts.unshift(...posts);
     }
   },
+
   SET_CURRENT_POST: (state, url) => {
     let post = state.blogPosts.find(post => {
       return post.url == url
@@ -107,7 +105,6 @@ const mutations = {
 
 export default new Vuex.Store({
   state,
-  getters,
   actions,
   mutations
 })

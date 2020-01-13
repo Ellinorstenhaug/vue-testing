@@ -14,7 +14,6 @@ const mutations = {
 }
 
 const store = new Vuex.Store({
-
     mutations
 })
 
