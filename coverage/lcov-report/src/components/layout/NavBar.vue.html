@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for src/components/partials/Comments.vue</title>
+    <title>Code coverage report for src/components/layout/NavBar.vue</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../prettify.css" />
     <link rel="stylesheet" href="../../../base.css" />
@@ -16,7 +16,7 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="../../../index.html">All files</a> / <a href="index.html">src/components/partials</a> Comments.vue
+      <a href="../../../index.html">All files</a> / <a href="index.html">src/components/layout</a> NavBar.vue
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
@@ -62,13 +62,7 @@
 <a name='L14'></a><a href='#L14'>14</a>
 <a name='L15'></a><a href='#L15'>15</a>
 <a name='L16'></a><a href='#L16'>16</a>
-<a name='L17'></a><a href='#L17'>17</a>
-<a name='L18'></a><a href='#L18'>18</a>
-<a name='L19'></a><a href='#L19'>19</a>
-<a name='L20'></a><a href='#L20'>20</a>
-<a name='L21'></a><a href='#L21'>21</a>
-<a name='L22'></a><a href='#L22'>22</a>
-<a name='L23'></a><a href='#L23'>23</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L17'></a><a href='#L17'>17</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -80,37 +74,25 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">&lt;template&gt;
-    &lt;div class="my-6 comments" v-if="currentPost.comments"&gt;
-        &lt;h4 class="headline my-2"&gt;Comments ({{currentPost.comments.length}})&lt;/h4&gt;
-        &lt;div class="comment" v-for="(comment, i) in currentPost.comments" :key="i"&gt;
-            &lt;h5 class="my-1 title thin"&gt;{{comment.name}} comments:
-            &lt;/h5&gt;
-            &lt;p class="caption my-0"&gt;{{comment.date}}&lt;/p&gt;
-            &lt;p class="my-1"&gt;{{comment.content}}&lt;/p&gt;
+    &lt;div id="nav"&gt;
+        &lt;div&gt;
+&nbsp;
+        &lt;router-link to="/"&gt;Home&lt;/router-link&gt; |
+        &lt;router-link to="/create"&gt;Create new&lt;/router-link&gt;
         &lt;/div&gt;
+        &lt;User /&gt;
     &lt;/div&gt;
 &lt;/template&gt;
 &nbsp;
 &lt;script&gt;
-    import {
-        mapState
-    } from 'vuex';
-    
+    import User from './User';
     export default {
-        computed: {
-            ...mapState(['currentPost'])
-        }
+        components: {User}
     }
 &lt;/script&gt;</pre></td></tr>
 </table></pre>

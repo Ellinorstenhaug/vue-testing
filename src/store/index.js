@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-
+import axios from 'axios'
 Vue.use(Vuex);
 
 export const state = {
@@ -46,10 +46,23 @@ export const state = {
       img: 'https://images.unsplash.com/photo-1526823127573-0fda76b6c24f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80'
     },
   ],
+  user: null,
   currentPost: undefined
 }
 
 export const actions = {
+  async GetUser({
+    commit
+  }, user) {
+    return await axios.get(`https://jsonplaceholder.typicode.com/users/${user}`)
+      .then(response => {
+        commit('SET_USER', response.data)
+        return response;
+      }).catch(error => {
+        return error
+      })
+  },
+
   AddPostToLocalStorage({
     commit
   }, post) {
@@ -61,7 +74,6 @@ export const actions = {
       arrayToAdd = [post]
     }
     localStorage.setItem('posts', JSON.stringify(arrayToAdd));
-
     commit('ADD_BLOGPOST', post)
   },
 }
@@ -81,11 +93,14 @@ export const mutations = {
     state.blogPosts.unshift(post);
   },
 
-  MERGE_BLOGPOSTS: (state) => {
-    let posts = JSON.parse(localStorage.getItem('posts'));
-    if (posts !== null) {
-      posts = posts.reverse();
-      state.blogPosts.unshift(...posts);
+  MERGE_BLOGPOSTS: (state, Post) => {
+    let LSPosts = JSON.parse(localStorage.getItem('posts'));
+    if (LSPosts !== null) {
+      LSPosts = LSPosts.reverse();
+      state.blogPosts.unshift(...LSPosts);
+    }
+    if(Post){
+      state.blogPosts.unshift(...Post)
     }
   },
 
@@ -96,12 +111,12 @@ export const mutations = {
     if (post) {
       state.currentPost = post;
     }
+  },
 
+  SET_USER: (state, user) => {
+    state.user = user;
   }
 }
-
-
-
 
 export default new Vuex.Store({
   state,

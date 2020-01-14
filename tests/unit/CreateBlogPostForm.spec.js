@@ -163,8 +163,6 @@ describe('CreateBlogPostForm', () => {
         })
     })
 
-
-
     //exempel på integrationstest 
     it('does not save blog post if title is invalid', async () => {
         const wrapper = shallowMount(CreateBlogPostForm, {
